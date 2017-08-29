@@ -7,7 +7,8 @@
 #include <time.h>
 #include <unistd.h>
 
-void rand_init() {
+void rand_init()
+{
 	static bool init_once_token = false;
 	if (!init_once_token) {
 		init_once_token = true;
@@ -15,7 +16,8 @@ void rand_init() {
 	}
 }
 
-int** allocate_square_matrix(size_t n) {
+int** allocate_square_matrix(size_t n)
+{
 	rand_init();
 
 	int** m = (int**)malloc(sizeof(int*) * n);
@@ -28,7 +30,8 @@ int** allocate_square_matrix(size_t n) {
 	return m;
 }
 
-long** allocate_square_matrix_long(size_t n) {
+long** allocate_square_matrix_long(size_t n)
+{
 	rand_init();
 
 	long** m = (long**)malloc(sizeof(long*) * n);
@@ -41,7 +44,8 @@ long** allocate_square_matrix_long(size_t n) {
 	return m;
 }
 
-void print_matrix(int** m, size_t rows, size_t cols) {
+void print_matrix(int** m, size_t rows, size_t cols)
+{
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols - 1; ++j) {
 			printf("%d ", m[i][j]);
@@ -50,7 +54,9 @@ void print_matrix(int** m, size_t rows, size_t cols) {
 	}
 	printf("\n");
 }
-void print_matrix_memory_layout(int** m, size_t rows, size_t cols) {
+
+void print_matrix_memory_layout(int** m, size_t rows, size_t cols)
+{
 	printf("%zux%zu matrix\n", rows, cols);
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols - 1; ++j) {
@@ -61,7 +67,8 @@ void print_matrix_memory_layout(int** m, size_t rows, size_t cols) {
 	printf("\n");
 }
 
-void print_matrix_memory_layout_long(long** m, size_t rows, size_t cols) {
+void print_matrix_memory_layout_long(long** m, size_t rows, size_t cols)
+{
 	printf("%zux%zu matrix\n", rows, cols);
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols - 1; ++j) {
@@ -72,7 +79,8 @@ void print_matrix_memory_layout_long(long** m, size_t rows, size_t cols) {
 	printf("\n");
 }
 
-void print_size_info() {
+void print_size_info()
+{
 #ifdef _SC_PAGESIZE
 	printf("System page size: %lu bytes\n\n", sysconf(_SC_PAGESIZE));
 #endif
@@ -88,14 +96,16 @@ void print_size_info() {
 	printf("\n");
 }
 
-void int_mat_free(int** m, size_t rows) {
+void int_mat_free(int** m, size_t rows)
+{
 	for (size_t i = 0; i < rows; ++i) {
 		free(m[i]);
 	}
 	free(m);
 }
 
-void long_mat_free(long** m, size_t rows) {
+void long_mat_free(long** m, size_t rows)
+{
 	for (size_t i = 0; i < rows; ++i) {
 		free(m[i]);
 	}

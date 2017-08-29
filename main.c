@@ -49,6 +49,7 @@ void print_matrix(int** m, size_t rows, size_t cols) {
  * @param cols number of cols
  */
 void print_matrix_memory_layout(int** m, size_t rows, size_t cols) {
+	printf("%zux%zu matrix\n", rows, cols);
 	for (size_t i = 0; i < rows; ++i) {
 		for (size_t j = 0; j < cols - 1; ++j) {
 			printf("%p ", (void*)&m[i][j]);
@@ -74,18 +75,28 @@ int main() {
 	// Seed random number generator
 	srand(time(NULL));
 
-	// Set matrix size
-	const int N = 5;
-
 	print_size_info();
 
-	int** A = allocate_square_matrix(N);
-	int** B = allocate_square_matrix(N);
+	int** A = allocate_square_matrix(5);
+	int** B = allocate_square_matrix(6);
+	int** C = allocate_square_matrix(7);
+	int** D = allocate_square_matrix(8);
+	int** E = allocate_square_matrix(9);
+
 	printf("Matrix A memory layout:\n");
-	print_matrix_memory_layout(A, N, N);
+	print_matrix_memory_layout(A, 5, 5);
 
 	printf("Matrix B memory layout:\n");
-	print_matrix_memory_layout(B, N, N);
+	print_matrix_memory_layout(B, 6, 6);
+
+	printf("Matrix C memory layout:\n");
+	print_matrix_memory_layout(C, 7, 7);
+
+	printf("Matric D memory layout:\n");
+	print_matrix_memory_layout(D, 8, 8);
+
+	printf("Matrix E memory layout:\n");
+	print_matrix_memory_layout(E, 9, 9);
 
 	return 0;
 }

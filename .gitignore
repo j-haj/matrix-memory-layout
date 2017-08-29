@@ -1,3 +1,9 @@
+# Executable
+run_mapper
+
+# macOS
+*/.DS_Store*
+
 # Prerequisites
 *.d
 
